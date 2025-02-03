@@ -1,0 +1,36 @@
+name: CI for Express Backend
+
+on:
+  push:
+    branches:
+      - main
+      - dev  # You can modify this based on your workflow
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint  # Ensure you have a linting script in package.json
+
+      - name: Run Tests
+        run: npm test  # Ensure you have test cases written (Jest, Mocha, etc.)
+
+      - name: Build Project
+        run: npm run build  # If applicable, modify for your setup
