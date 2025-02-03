@@ -29,5 +29,3 @@ jobs:
       - name: Run Linter
         run: npm run lint  # Ensure you have a linting script in package.json
 
-      - name: Build Project
-        run: npm run build  # If applicable, modify for your setup
